@@ -2,7 +2,12 @@
 defineProps({
   title: {
     type: String,
+    //if no prop is passed from the parent
     default: "Become a Vue Dev",
+  },
+  subTitle: {
+    type: String,
+    default: "Find the Vue job that fits your skills and needs",
   },
 });
 </script>
@@ -16,7 +21,7 @@ defineProps({
           {{ title }}
         </h1>
         <p class="my-4 text-xl text-white">
-          Find the Vue job that fits your skills and needs
+          {{ subTitle }}
         </p>
       </div>
     </div>
