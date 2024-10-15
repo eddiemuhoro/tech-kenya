@@ -1,11 +1,4 @@
-<script setup>
-import { RouterLink, useRoute } from "vue-router";
-
-const isActiveLink = (routePath) => {
-  const route = useRoute();
-  return route.path === routePath;
-};
-</script>
+<script setup></script>
 
 <template>
   <nav class="bg-green-700 border-b border-green-500">
