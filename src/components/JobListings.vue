@@ -6,6 +6,10 @@ const jobs = ref(jobData);
 const showAll = ref(true);
 defineProps({
   limit: Number,
+  showButton: {
+    type: Boolean,
+    default: false,
+  },
 });
 </script>
 <template>
@@ -23,7 +27,7 @@ defineProps({
       </div>
     </div>
   </section>
-  <section class="m-auto max-w-lg my-10 px-6">
+  <section v-if="showButton" class="m-auto max-w-lg my-10 px-6">
     <a
       href="/jobs"
       class="block bg-black text-white text-center py-4 px-6 rounded-xl hover:bg-gray-700"
