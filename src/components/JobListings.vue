@@ -1,8 +1,8 @@
 <script setup>
 import jobData from "@/jobs.json";
-import { ref } from "vue";
+import { ref, onMounted, reactive } from "vue";
 import JobListing from "./JobListing.vue";
-const jobs = ref(jobData);
+import { RouterLink } from "vue-router";
 const showAll = ref(true);
 defineProps({
   limit: Number,
@@ -10,6 +10,23 @@ defineProps({
     type: Boolean,
     default: false,
   },
+});
+const jobs = ref([]);
+const state = reactive({
+  jobs: [],
+  isLoading: false,
+});
+console.log("State jobs", state.jobs);
+
+onMounted(async () => {
+  try {
+    const response = await fetch("http://localhost:5000/jobs");
+    const data = await response.json();
+    state.jobs = data;
+    console.log("daya.", state.jobs);
+  } catch (err) {
+    console.log("Error", err);
+  }
 });
 </script>
 <template>
@@ -28,10 +45,10 @@ defineProps({
     </div>
   </section>
   <section v-if="showButton" class="m-auto max-w-lg my-10 px-6">
-    <a
-      href="/jobs"
+    <RouterLink
+      to="/jobs"
       class="block bg-black text-white text-center py-4 px-6 rounded-xl hover:bg-gray-700"
-      >View All Jobs</a
+      >View All Jobs</RouterLink
     >
   </section>
 </template>
