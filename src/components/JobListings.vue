@@ -3,6 +3,7 @@ import jobData from "@/jobs.json";
 import { ref, onMounted, reactive } from "vue";
 import JobListing from "./JobListing.vue";
 import { RouterLink } from "vue-router";
+import PulseLoader from "vue-spinner/src/PulseLoader.vue";
 const showAll = ref(true);
 defineProps({
   limit: Number,
@@ -19,13 +20,16 @@ const state = reactive({
 console.log("State jobs", state.jobs);
 
 onMounted(async () => {
+  state.isLoading = true;
   try {
-    const response = await fetch("http://localhost:5000/jobs");
+    const response = await fetch("http://localhost:3001/api/jobs");
     const data = await response.json();
+    await new Promise((resolve) => setTimeout(resolve, 2000));
     state.jobs = data;
-    console.log("daya.", state.jobs);
+    state.isLoading = false;
   } catch (err) {
     console.log("Error", err);
+    state.isLoading = false;
   }
 });
 </script>
@@ -35,7 +39,10 @@ onMounted(async () => {
       <h2 class="text-green-500 text-3xl font-bold mb-6 text-center">
         Browse Jobs
       </h2>
-      <div class="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4">
+      <div v-if="state.isLoading" class="text-center text-gray-500 py-6">
+        <PulseLoader />
+      </div>
+      <div v-else class="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4">
         <JobListing
           v-for="job in state.jobs.slice(0, limit || state.jobs.length)"
           :key="job.id"
