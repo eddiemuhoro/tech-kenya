@@ -1,5 +1,6 @@
 import JobAdd from "@/components/JobAdd.vue";
 import HomeView from "@/views/HomeView.vue";
+import JobEdit from "@/views/JobEdit.vue";
 import JobsVue from "@/views/JobsVue.vue";
 import JobVue from "@/views/JobVue.vue";
 import NotFound from "@/views/NotFound.vue";
@@ -33,6 +34,11 @@ const router = createRouter({
       path: "/:catchAll(.*)",
       name: "not-found",
       component: NotFound,
+    },
+    {
+      path: "/job/edit/:id",
+      name: "edit-job",
+      component: JobEdit,
     },
   ],
 });
