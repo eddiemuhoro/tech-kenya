@@ -23,6 +23,12 @@ importers:
       vue-router:
         specifier: ^4.0.13
         version: 4.0.13(vue@3.5.12)
+      vue-spinner:
+        specifier: ^1.0.4
+        version: 1.0.4
+      vue-toastification:
+        specifier: 2.0.0-rc.5
+        version: 2.0.0-rc.5(vue@3.5.12)
     devDependencies:
       '@eslint/js':
         specifier: ^9.12.0
@@ -1371,6 +1377,14 @@ packages:
     peerDependencies:
       vue: ^3.2.0
 
+  vue-spinner@1.0.4:
+    resolution: {integrity: sha512-GNG2F+8BLX201JT/jUX+84Gsi3ZteVQwt9K7mues3ts9FcQ95dGn7uu6a5ndSxdYYUEzfh1KngZiOE0u+l4itA==}
+
+  vue-toastification@2.0.0-rc.5:
+    resolution: {integrity: sha512-q73e5jy6gucEO/U+P48hqX+/qyXDozAGmaGgLFm5tXX4wJBcVsnGp4e/iJqlm9xzHETYOilUuwOUje2Qg1JdwA==}
+    peerDependencies:
+      vue: ^3.0.2
+
   vue@3.5.12:
     resolution: {integrity: sha512-CLVZtXtn2ItBIi/zHZ0Sg1Xkb7+PU32bJJ8Bmy7ts3jxXTcbfsEfBivFYYWz1Hur+lalqGAh65Coin0r+HRUfg==}
     peerDependencies:
@@ -2617,6 +2631,12 @@ snapshots:
   vue-router@4.0.13(vue@3.5.12):
     dependencies:
       '@vue/devtools-api': 6.6.4
+      vue: 3.5.12
+
+  vue-spinner@1.0.4: {}
+
+  vue-toastification@2.0.0-rc.5(vue@3.5.12):
+    dependencies:
       vue: 3.5.12
 
   vue@3.5.12:
