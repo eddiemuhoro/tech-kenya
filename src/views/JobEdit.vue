@@ -58,13 +58,16 @@ const handleSubmit = async () => {
   };
   console.log(formData);
 
-  const response = await fetch(`http://localhost:3001/api/jobs/${jobId}`, {
-    method: "PUT",
-    headers: {
-      "Content-Typer": "application/json",
-    },
-    body: JSON.stringify(formData),
-  });
+  const response = await fetch(
+    `https://api.sansadigital.com/api/jobs/${jobId}`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Typer": "application/json",
+      },
+      body: JSON.stringify(formData),
+    }
+  );
   if (response.ok) {
     toast.success("Updated");
   } else {
