@@ -2,7 +2,7 @@ import JobAdd from "@/components/JobAdd.vue";
 import HomeView from "@/views/HomeView.vue";
 import JobEdit from "@/views/JobEdit.vue";
 import JobsVue from "@/views/JobsVue.vue";
-import JobVue from "@/views/JobVue.vue";
+import JobVue from "@/views/JobView.vue";
 import NotFound from "@/views/NotFound.vue";
 import { createWebHistory } from "vue-router";
 import { createRouter } from "vue-router";
