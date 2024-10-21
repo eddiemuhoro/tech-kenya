@@ -1,6 +1,11 @@
 <script setup>
 import { RouterLink } from "vue-router";
 import Card from "./Card.vue";
+import { useToast } from "vue-toastification";
+const toast = useToast();
+const showWarning = () => {
+  toast.warning("Coming soon");
+};
 </script>
 
 <template>
@@ -25,8 +30,9 @@ import Card from "./Card.vue";
             List your job to find the perfect developer for the role
           </p>
           <RouterLink
-            to="/add/job"
-            class="inline-block bg-green-500 text-white rounded-lg px-4 py-2 hover:bg-green-600"
+            to="/"
+            class="inline-block bg-gray-300 text-white rounded-lg px-4 py-2"
+            @click="showWarning"
           >
             Add Job
           </RouterLink>
