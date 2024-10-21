@@ -1,4 +1,5 @@
 <script setup>
+import { apiUrl } from "@/api/baseUrl";
 import BackButton from "@/components/BackButton.vue";
 import { reactive, onMounted, computed } from "vue";
 import { RouterLink } from "vue-router";
@@ -18,9 +19,7 @@ const jobId = router.params.id;
 onMounted(async () => {
   state.isLoading = true;
   try {
-    const response = await fetch(
-      `https://api.sansadigital.com/api/jobs/${jobId}`
-    );
+    const response = await fetch(`${apiUrl}/${jobId}`);
     const data = await response.json();
     console.log(data);
 

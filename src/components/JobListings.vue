@@ -4,6 +4,7 @@ import { ref, onMounted, reactive } from "vue";
 import JobListing from "./JobListing.vue";
 import { RouterLink } from "vue-router";
 import PulseLoader from "vue-spinner/src/PulseLoader.vue";
+import { apiUrl } from "@/api/baseUrl";
 const showAll = ref(true);
 defineProps({
   limit: Number,
@@ -22,7 +23,7 @@ console.log("State jobs", state.jobs);
 onMounted(async () => {
   state.isLoading = true;
   try {
-    const response = await fetch("https://api.sansadigital.com/api/jobs");
+    const response = await fetch(apiUrl);
     const data = await response.json();
     state.jobs = data.data;
     state.isLoading = false;
