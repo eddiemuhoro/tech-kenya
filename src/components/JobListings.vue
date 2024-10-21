@@ -22,10 +22,9 @@ console.log("State jobs", state.jobs);
 onMounted(async () => {
   state.isLoading = true;
   try {
-    const response = await fetch("http://localhost:3001/api/jobs");
+    const response = await fetch("https://api.sansadigital.com/api/jobs");
     const data = await response.json();
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    state.jobs = data;
+    state.jobs = data.data;
     state.isLoading = false;
   } catch (err) {
     console.log("Error", err);
