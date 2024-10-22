@@ -69,6 +69,8 @@ const parsedRequirements = computed(() => {
 
   return { requirementsArray, responsibilitiesArray };
 });
+
+console.log("reqs", parsedRequirements.value);
 </script>
 <template>
   <BackButton />
@@ -119,9 +121,17 @@ const parsedRequirements = computed(() => {
 
             <div v-html="state.job.description" class="mb-6"></div>
 
-            <h3 class="text-green-800 text-lg font-bold mb-6">Requirements</h3>
+            <h3
+              v-if="state.job.requirements !== null"
+              class="text-green-800 text-lg font-bold mb-6"
+            >
+              Requirements
+            </h3>
             <!-- Requirements Section -->
-            <ul class="list-disc pl-5 mb-4">
+            <ul
+              v-if="parsedRequirements.requirementsArray.length !== 0"
+              class="list-disc pl-5 mb-4"
+            >
               <li
                 v-for="(
                   requirement, index
@@ -131,6 +141,7 @@ const parsedRequirements = computed(() => {
                 {{ requirement }}
               </li>
             </ul>
+            <div v-else v-html="state.job.requirements"></div>
 
             <h3 class="text-green-800 text-lg font-bold mb-2">Salary</h3>
 
