@@ -44,31 +44,39 @@ onMounted(async () => {
 console.log(selectedCategories.value.length);
 
 const filteredJobs = computed(() => {
-  if (selectedCategories.value.length === 0) {
-    return state?.jobs; // No filters applied, show all jobs
-  }
-  return state?.jobs.filter((job) =>
-    selectedCategories.value.includes(job.category)
-  );
+  return state?.jobs.filter((job) => {
+    const matchesCategory = selectedCategories.value.length
+      ? selectedCategories.value.includes(job.category)
+      : true;
+
+    const matchesJobType = selectedJobTypes.value.length
+      ? selectedJobTypes.value.includes(job.jobtype)
+      : true;
+
+    const matchesLocation = selectedLocations.value.length
+      ? selectedLocations.value.includes(job.location)
+      : true;
+
+    return matchesCategory && matchesJobType && matchesLocation;
+  });
 });
 
 // Apply selected filters
-const applyFilters = (categories) => {
+const applyFilters = ({ categories, jobTypes, locations }) => {
   selectedCategories.value = categories;
+  selectedJobTypes.value = jobTypes;
+  selectedLocations.value = locations;
 };
 </script>
 <template>
   <section class="bg-gray-50 px-4 py-10">
     <div class="container-xl lg:container m-auto">
-      <div class="flex items-center justify-between mb-6">
-        <h2 class="text-green-500 text-3xl font-bold mb-6 text-center">
-          Browse Jobs
-        </h2>
-        <button class="text-green-500">Filter Jobs</button>
-      </div>
+      <h2 class="text-green-500 text-3xl font-bold mb-6 text-center">
+        Browse Jobs
+      </h2>
 
       <section>
-        <div class="flex md:flex-row space-x-2">
+        <div class="flex flex-col-reverse md:flex-row gap-2">
           <div v-if="state.isLoading" class="text-center text-gray-500 py-6">
             <PulseLoader />
           </div>
@@ -82,12 +90,8 @@ const applyFilters = (categories) => {
               :job="job"
             />
           </div>
-          <div class="w-3/4">
-            <FilterJobs
-              :jobs="state.jobs"
-              @apply-filters="applyFilters"
-              @close="showFilters = false"
-            />
+          <div v-if="!showButton" class="md:w-3/4">
+            <FilterJobs :jobs="state.jobs" @apply-filters="applyFilters" />
           </div>
         </div>
       </section>
