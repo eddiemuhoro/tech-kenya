@@ -82,7 +82,9 @@ const applyFilters = ({ categories, jobTypes, locations }) => {
           </div>
           <div
             v-else
-            class="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4"
+            :class="`grid grid-cols-1 gap-4 md:grid-cols-3  lg:${
+              showButton ? 'grid-cols-4' : 'grid-cols-3'
+            }`"
           >
             <JobListing
               v-for="job in filteredJobs?.slice(0, limit || state.jobs.length)"
