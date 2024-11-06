@@ -27,7 +27,7 @@ const showWarning = () => {
               alt="Vue Jobs"
             />
             <span class="hidden md:block text-white text-2xl font-bold ml-2">
-              Vue Jobs
+              Tech Jobs
             </span>
           </RouterLink>
           <div class="md:ml-auto">
