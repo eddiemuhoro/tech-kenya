@@ -36,10 +36,26 @@ const truncatedDescription = computed(() => {
 const toggleShowFullDescription = () => {
   showFullDescription.value = !showFullDescription.value;
 };
+
+//trancate title to 30 characters
+const truncatedTitle = computed(() => {
+  let title = props.job.title;
+
+  if (title.length > 30) {
+    return title.substring(0, 30) + "...";
+  }
+
+  return title;
+});
 </script>
 
 <template>
-  <div class="bg-white rounded-xl shadow-md relative">
+  <div
+    :class="[
+      'bg-white rounded-xl shadow-md relative md:h-[500px] lg:h-[400px] xl:h-[350px]',
+      { 'overflow-scroll': showFullDescription },
+    ]"
+  >
     <div class="p-4">
       <div class="mb-6">
         <div class="text-gray-600 my-2">{{ job.type }}</div>
