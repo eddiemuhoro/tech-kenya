@@ -77,13 +77,16 @@ const applyFilters = ({ categories, jobTypes, locations }) => {
 
       <section>
         <div class="flex flex-col-reverse md:flex-row gap-2">
-          <div v-if="state.isLoading" class="text-center text-gray-500 py-6">
+          <div
+            v-if="state.isLoading"
+            class="text-center w-full text-gray-500 py-6"
+          >
             <PulseLoader />
           </div>
           <div
             v-else
-            :class="`grid grid-cols-1 gap-4 md:grid-cols-3  lg:${
-              showButton ? 'grid-cols-4' : 'grid-cols-3'
+            :class="`grid  gap-4  ${
+              showButton ? 'md:grid-cols-4 ' : 'md:grid-cols-3 '
             }`"
           >
             <JobListing
@@ -92,7 +95,7 @@ const applyFilters = ({ categories, jobTypes, locations }) => {
               :job="job"
             />
           </div>
-          <div v-if="!showButton" class="md:w-3/4">
+          <div v-if="!showButton && !state.isLoading" class="md:w-3/4">
             <FilterJobs :jobs="state.jobs" @apply-filters="applyFilters" />
           </div>
         </div>
