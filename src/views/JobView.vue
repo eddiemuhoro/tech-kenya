@@ -181,11 +181,7 @@ console.log("reqs", parsedRequirements.value);
               {{ state.job.user?.email ?? "Not available" }}
             </p>
 
-            <h3 class="text-xl">Contact Phone:</h3>
-
-            <p class="my-2 bg-green-100 p-2 font-bold">
-              {{ state.job.user?.phone_number ?? "Not available" }}
-            </p>
+          
           </div>
         </aside>
       </div>
