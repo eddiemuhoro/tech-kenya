@@ -6,8 +6,7 @@ import { RouterLink } from "vue-router";
 import PulseLoader from "vue-spinner/src/PulseLoader.vue";
 import { apiUrl } from "@/api/baseUrl";
 import FilterJobs from "./FilterJobs.vue";
-const showAll = ref(true);
-const showFilters = ref(false);
+//receive props
 defineProps({
   limit: Number,
   showButton: {
@@ -15,7 +14,6 @@ defineProps({
     default: false,
   },
 });
-const jobs = ref([]);
 const state = reactive({
   jobs: [],
   isLoading: false,
