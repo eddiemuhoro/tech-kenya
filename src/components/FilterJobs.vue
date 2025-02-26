@@ -4,7 +4,7 @@ const props = defineProps({
   jobs: Array,
 });
 
-const showFilter = ref(true);
+const showFilter = ref(false);
 const selectedCategories = ref([]);
 const selectedJobTypes = ref([]);
 const selectedLocations = ref([]);
